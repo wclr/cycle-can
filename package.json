@@ -1,6 +1,6 @@
 {
   "name": "cycle-can",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Can.js driver for Cycle.js",
   "main": "cycle-can.js",
   "scripts": {
