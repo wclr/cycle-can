@@ -1,0 +1,11 @@
+{
+  "name": "cycle-can",
+  "version": "0.0.1",
+  "description": "Can.js driver for Cycle.js",
+  "main": "cycle-can.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "whitecolor",
+  "license": "ISC"
+}
