@@ -5,4 +5,14 @@
 
 Allows to link `can.Map` with cycle.js function.
 
+```javascirpt
+let map = new can.Map({a: 1, b: 2})
+ 
+run(main, {
+  HTTP: makeHTTPDriver(),
+  map: makeMapDriver(map)
+})
+
+```
+
 Pre-alpha =)
