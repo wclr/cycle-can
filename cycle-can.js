@@ -22,7 +22,7 @@ export function makeMapDriver (map, options = {}) {
       }, {})
     }
 
-    return Rx.Observable.create(observer => {
+    var ob =  Rx.Observable.create(observer => {
       // "change" on map (list)
       // how = "set"
       // how ="add" newVal -> added items, prevVal -> undefined
@@ -72,20 +72,25 @@ export function makeMapDriver (map, options = {}) {
       return function dispose () {
         bindTo.unbind(eventType, handler)
       }
-    })
+    }).replay(null, 1)
+
+    ob.connect()
+
+    return ob
+
   }
   // we take either attr object
   // that will be passed to map.attr,
   // or array: first item is attribute name, second is value
-  function publish (event) {
-    if (Array.isArray(event)) {
-      map.attr(event[0], event[1])
+  function publish (data) {
+    if (Array.isArray(data)) {
+      map.attr(data[0], data[1])
     } else {
-      map.attr(event)
+      map.attr(data)
     }
   }
-  return function mapDriver (events$) {
-    events$.forEach(event => publish(event))
+  return function mapDriver (data$) {
+    data$.forEach(data => publish(data))
     return {
       get,
       dispose: () => handlers.forEach(h => map.unbind(h.eventType, h.handler))

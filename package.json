@@ -7,5 +7,10 @@
     "test": "standard"
   },
   "author": "whitecolor",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "can": "^2.3.15",
+    "cycle": "^1.0.3",
+    "tape-standalone": "^4.4.0"
+  }
 }
